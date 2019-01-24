@@ -25,7 +25,11 @@ yum install -y docker
 yum install -y docker-ce
 systemctl enable docker
 systemctl start docker
-docker pull docker pull docker.elastic.co/elasticsearch/elasticsearch:6.5.4
-docker run -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:6.5.4
+docker pull docker.elastic.co/elasticsearch/elasticsearch:6.5.4
+docker pull docker.elastic.co/kibana/kibana:6.5.4
+docker pull grafana/grafana
+docker run --name elasticsearch -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:6.5.4
+docker run --name kibana -p 5601:5601 --link elasticsearch:elasticsearch -e "ELASTICSEARCH_URL=http://localhost:9200" docker.elastic.co/kibana/kibana:6.5.4
+docker run --name grafana -p 3000:3000 -d -e "GF_SECURITY_ADMIN_PASSWORD=secret" grafana/grafana
 SCRIPT
 }
