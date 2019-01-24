@@ -8,7 +8,7 @@ zone = "asia-east1-a"
 tags = ["elasticsearch"]
 boot_disk {
   initialize_params {
-    image = "centos-7"
+    image = "elasticsearch-6"
   }
 }
 
