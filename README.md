@@ -1,7 +1,12 @@
 # terraform_elasticsearch
 
+```bash
+GOOGLE_PROJECT=YOUR_PROJECT_ID
+GOOGLE_REGION=YOUR_REGION
 ```
-cat > variable.tf <<EOF
+
+```bash
+cat > elasticsearch/variables.tf <<EOF
 variable "project" {
   default = "${GOOGLE_PROJECT}"
 }
